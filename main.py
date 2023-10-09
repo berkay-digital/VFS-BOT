@@ -9,7 +9,12 @@ audio = AudioSegment.from_file(file_path)
 
 play(audio)
 
-browser = webdriver.Chrome(executable_path='chromedriver')
+import chromedriver_autoinstaller
+
+
+chromedriver_autoinstaller.install()
+
+browser = webdriver.Chrome()
 
 browser.get("https://visa.vfsglobal.com/tur/pl/pol/login")
 
