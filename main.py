@@ -1,13 +1,5 @@
 from selenium import webdriver
 import time
-from pydub import AudioSegment
-from pydub.playback import play
-
-file_path = "Start.mp4"
-
-audio = AudioSegment.from_file(file_path)
-
-play(audio)
 
 browser = webdriver.Chrome()
 
@@ -80,10 +72,8 @@ def search():
     while True:
         try:
             button = browser.find_element_by_xpath("//button[contains(text(), 'Next')]")
+            print("Found")
             button.click()
-            file_path = "Alarm.mp4"
-            audio = AudioSegment.from_file(file_path)
-            play(audio)
             break
         except:
             if time.time() - start_time > 300:
