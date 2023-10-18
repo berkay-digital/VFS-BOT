@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options            
 from selenium.common.exceptions import TimeoutException            
 import time
+import random
 from vlc import MediaPlayer
 name = ""
 surname = ""
@@ -78,12 +79,12 @@ def search():
         time.sleep(30)
         WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR,"button.mat-focus-indicator.mat-stroked-button.mat-button-base.btn.btn-block.btn-brand-orange.mat-btn-lg"))).click()
         # Let's test it until here. Edit: it works
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID,"mat-select-14"))).click()
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID,"mat-select-value-5"))).click()
         WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//mat-option/span[contains(., '1 - Wiza typu D')]"))).click()
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID,"mat-select-16"))).click()
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID,"mat-select-value-7"))).click()
         WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//mat-option/span[contains(., '4 - wiza typu D w celu innym  niż wymienione')]"))).click()
         time.sleep(2)
-        WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,"mat-select-18"))).click()
+        WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,"mat-select-value-9"))).click()
         MediaPlayer(r"Alarm.mp3").play()           
         time.sleep(20)                                     
         exit()
@@ -92,4 +93,4 @@ def search():
             WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CLASS_NAME, "dropdown-item"))).click()
 while True:
     search()
-    time.sleep(960)
+    time.sleep(random.uniform(3 * 60, 7 * 60))

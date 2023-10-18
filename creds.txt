@@ -3,4 +3,4 @@ surname
 passport
 code
 number
-mail
+email
