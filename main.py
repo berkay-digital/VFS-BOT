@@ -16,8 +16,14 @@ try:
                 .until(EC.element_to_be_clickable((By.CSS_SELECTOR, 
                                                     "div#onetrust-button-group button#onetrust-accept-btn-handler"))) \
                 .click()
+    # sometimes it doesn't work, so let's try again
+    WebDriverWait(driver, 10) \
+            .until(EC.element_to_be_clickable((By.CSS_SELECTOR, 
+                                                "div#onetrust-button-group button#onetrust-accept-btn-handler"))) \
+            .click()
 except:
     pass
+
 input("Press enter to proceed after entering the credentials.")
 
 
@@ -25,10 +31,10 @@ def search():
     WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID,"mat-checkbox-1"))).click()
     WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID,"mat-checkbox-2"))).click()
     time.sleep(2)    
-    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CLASS_NAME,"mat-focus-indicator btn mat-btn-lg btn-block btn-brand-orange mat-raised-button mat-button-base"))).click()
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//mat-button-wrapper/span[contains(., 'Rozpocznij nową rezerwację')]"))).click()
     WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID,"mat-checkbox-3"))).click()
     time.sleep(2)
-    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CLASS_NAME,"mat-focus-indicator btn mat-btn-lg btn-block btn-brand-orange mat-stroked-button mat-button-base"))).click()
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//mat-stroked-button/span[contains(., 'Kontynuować')]"))).click()
     time.sleep(2)
     WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID,"mat-select-0"))).click()
     WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//mat-option/span[contains(., 'Male')]"))).click()
