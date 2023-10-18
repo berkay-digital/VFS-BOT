@@ -16,7 +16,7 @@ mail = ""
 with open('creds.txt', 'r') as file:
     lines = file.read().splitlines()
 
-if len(lines) >= 7:
+if len(lines) >= 6:
     name = lines[0]
     surname = lines[1]
     passport = lines[2]
