@@ -42,17 +42,16 @@ def search():
     WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//mat-option/span[contains(., 'Male')]"))).click()
     time.sleep(2)
     WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID,"mat-select-2"))).click()
-    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//mat-option/span[contains(., 'Turkiye')]"))).click()
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//mat-option/span[contains(., 'TURKEY')]"))).click()
     time.sleep(2)
     driver.find_element(By.ID, "mat-input-3").send_keys("isim")
     driver.find_element(By.ID, "mat-input-4").send_keys("soyisim")
     driver.find_element(By.ID, "mat-input-5").send_keys("passaport")
     driver.find_element(By.ID, "mat-input-6").send_keys("90")
     driver.find_element(By.ID, "mat-input-7").send_keys("1234567890")
-    driver.find_element(By.ID, "mat-input-8").send_keys("eposta")
+    driver.find_element(By.ID, "mat-input-8").send_keys("eposta@test.com")
     time.sleep(2)
-    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR,"mat-focus-indicator mat-stroked-button mat-button-base btn btn-block btn-brand-orange mat-btn-lg"))).click()
-
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR,"button.mat-focus-indicator.mat-stroked-button.mat-button-base.btn.btn-block.btn-brand-orange.mat-btn-lg"))).click()
     # Let's test it until here.
 
 
