@@ -1,0 +1,6 @@
+name
+surname
+passport
+code
+number
+mail
