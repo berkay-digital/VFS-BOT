@@ -78,11 +78,15 @@ def search():
         time.sleep(30)
         WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR,"button.mat-focus-indicator.mat-stroked-button.mat-button-base.btn.btn-block.btn-brand-orange.mat-btn-lg"))).click()
         # Let's test it until here. Edit: it works
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID,"mat-select-3"))).click()
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID,"mat-select-14"))).click()
         WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//mat-option/span[contains(., '1 - Wiza typu D')]"))).click()
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID,"mat-select-4"))).click()
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID,"mat-select-16"))).click()
         WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//mat-option/span[contains(., '4 - wiza typu D w celu innym  niż wymienione')]"))).click()
-        time.sleep(5)
+        time.sleep(2)
+        WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,"mat-select-18"))).click()
+        MediaPlayer(r"Alarm.mp3").play()           
+        time.sleep(20)                                     
+        exit()
     except TimeoutException:
             WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "navbarDropdown"))).click()
             WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CLASS_NAME, "dropdown-item"))).click()
