@@ -1,94 +1,51 @@
-from selenium import webdriver
+from selenium.webdriver import Chrome                               # Chromedriver
+from selenium.webdriver.common.by import By                         # To find the elements
+from selenium.webdriver.support.ui import WebDriverWait             # To wait
+from selenium.webdriver.support import expected_conditions as EC    # To wait
+from selenium.webdriver.chrome.options import Options               # To resize the chrome window
+from selenium.common.exceptions import TimeoutException             # To apply try/except
 import time
+from vlc import MediaPlayer
 
-browser = webdriver.Chrome()
+driver = Chrome()
 
-browser.get("https://visa.vfsglobal.com/tur/pl/pol/login")
+driver.get("https://visa.vfsglobal.com/tur/pl/pol/login")
+time.sleep(2)
+try:
+    WebDriverWait(driver, 10) \
+                .until(EC.element_to_be_clickable((By.CSS_SELECTOR, 
+                                                    "div#onetrust-button-group button#onetrust-accept-btn-handler"))) \
+                .click()
+except:
+    pass
+input("Press enter to proceed after entering the credentials.")
 
-input("Press Y to proceed: ")
 
 def search():
-    checkmark = browser.find_element_by_id("mat-checkbox-1-input")
-    checkmark.click()
-    time.sleep(1)
-    checkmark = browser.find_element_by_id("mat-checkbox-2-input")
-    checkmark.click()
-    time.sleep(1)
-    button = browser.find_element_by_xpath("//button[contains(text(), ' Rozpocznij nową rezerwację ')]")
-    button.click()
-    time.sleep(1)
-    checkmark = browser.find_element_by_id("mat-checkbox-3-input")
-    checkmark.click()
-    time.sleep(1)
-    button = browser.find_element_by_xpath("//button[contains(text(), ' Kontynuować ')]")
-    button.click()
-    time.sleep(1)
-    input_field = browser.find_element_by_id("mat-input-9")
-    input_field.send_keys("Name")
-    time.sleep(1)
-    input_field = browser.find_element_by_id("mat-input-10")
-    input_field.send_keys("Name")
-    time.sleep(1)
-    input_field = browser.find_element_by_id("mat-input-11")
-    input_field.send_keys("Pass")
-    time.sleep(1)
-    input_field = browser.find_element_by_id("mat-input-12")
-    input_field.send_keys("90")
-    time.sleep(1)
-    input_field = browser.find_element_by_id("mat-input-13")
-    input_field.send_keys("Number")
-    time.sleep(1)
-    input_field = browser.find_element_by_id("mat-input-14")
-    input_field.send_keys("email")
-    time.sleep(1)
-    dropdown = browser.find_element_by_id("mat-select-value-11")
-    dropdown.click()
-    time.sleep(1)
-    dropdown = browser.find_element_by_id("mat-option-466")
-    dropdown.click()
-    time.sleep(1)
-    dropdown = browser.find_element_by_id("mat-select-value-13")
-    dropdown.click()
-    time.sleep(1)
-    dropdown = browser.find_element_by_id("mat-option-851")
-    dropdown.click()
-    time.sleep(1)
-    button = browser.find_element_by_xpath("//button[contains(text(), ' Zapisz ')]")
-    button.click()
-    time.sleep(1)
-    dropdown = browser.find_element_by_id("category")
-    dropdown.click()
-    dropdown.send_keys("D Visa")
-    time.sleep(1)
-    dropdown = browser.find_element_by_id("mission")
-    dropdown.click()
-    dropdown.send_keys("Poland, Warsaw")
-    time.sleep(1)
-    dropdown = browser.find_element_by_id("mission")
-    dropdown.click()
-    dropdown.send_keys("Poland, Warsaw")
-    time.sleep(1)
-    start_time = time.time()
-    while True:
-        try:
-            button = browser.find_element_by_xpath("//button[contains(text(), 'Next')]")
-            print("Found")
-            button.click()
-            break
-        except:
-            if time.time() - start_time > 300:
-                browser.get("https://visa.vfsglobal.com/tur/pl/pol/dashboard")
-                break
-            time.sleep(5)
-            dropdown = browser.find_element_by_id("mission")
-            dropdown.click()
-            dropdown.send_keys("asd")
-            time.sleep(2)
-            dropdown = browser.find_element_by_id("mission")
-            dropdown.click()
-            dropdown.send_keys("Poland, Warsaw")
-            time.sleep(5)
-            continue
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID,"mat-checkbox-1"))).click()
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID,"mat-checkbox-2"))).click()
+    time.sleep(2)
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR,"mat-focus-indicator btn mat-btn-lg btn-block btn-brand-orange mat-raised-button mat-button-base"))).click()
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID,"mat-checkbox-3"))).click()
+    time.sleep(2)
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR,"mat-focus-indicator btn mat-btn-lg btn-block btn-brand-orange mat-stroked-button mat-button-base"))).click()
+    time.sleep(2)
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID,"mat-select-0"))).click()
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//mat-option/span[contains(., 'Male')]"))).click()
+    time.sleep(2)
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID,"mat-select-2"))).click()
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//mat-option/span[contains(., 'Turkiye')]"))).click()
+    time.sleep(2)
+    driver.find_element(By.ID, "mat-input-3").send_keys("isim")
+    driver.find_element(By.ID, "mat-input-4").send_keys("soyisim")
+    driver.find_element(By.ID, "mat-input-5").send_keys("passaport")
+    driver.find_element(By.ID, "mat-input-6").send_keys("90")
+    driver.find_element(By.ID, "mat-input-7").send_keys("1234567890")
+    driver.find_element(By.ID, "mat-input-8").send_keys("eposta")
+    time.sleep(2)
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR,"mat-focus-indicator mat-stroked-button mat-button-base btn btn-block btn-brand-orange mat-btn-lg"))).click()
+
+    # Let's test it until here.
 
 
 while True:
