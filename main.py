@@ -20,9 +20,9 @@ if len(lines) >= 6:
     name = lines[0]
     surname = lines[1]
     passport = lines[2]
-    code = lines[4]
-    number = lines[5]
-    mail = lines[6]
+    code = lines[3]
+    number = lines[4]
+    mail = lines[5]
 else:
     print("The file 'creds.txt' does not contain enough lines.")
     exit()
