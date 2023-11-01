@@ -86,7 +86,7 @@ def search():
         WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//mat-option/span[contains(., '4 - wiza typu D w celu innym  niż wymienione')]"))).click()
         time.sleep(2)
         WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID,"mat-select-18"))).click()
-        MediaPlayer(r"Alarm.mp3").play()           
+        MediaPlayer(r"Alarm.mp4").play()           
         time.sleep(20)                                     
         exit()
     except:
